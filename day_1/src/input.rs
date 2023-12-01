@@ -1,7 +1,7 @@
 
 // no need to involve file reading into this, just store the input as a rust string >:D
 
-pub const input: &str = "76xkqjzqtwonfour
+pub const INPUT: &str = "76xkqjzqtwonfour
 sixthree8sixjxjqsjgjgp
 38bgcczgtninefivefive
 sixthree4eight
