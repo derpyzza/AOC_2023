@@ -1,0 +1,3 @@
+[submodule "AoC_Inputs"]
+	path = AoC_Inputs
+	url = git@github.com:derpyzza/AoC_Inputs.git
