@@ -1,4 +1,4 @@
-**/target/
-**/build/
-**/out/
-day_2/**.txt
+**/**/target/
+**/**/build/
+**/**/out/
+**/**/input.txt
