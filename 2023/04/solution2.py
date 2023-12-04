@@ -39,7 +39,7 @@ for id, set in enumerate(win_nums):
         for x in range(1, score):
             scores[id+x] += 1
     
-print(scores)
+# print(scores)
 
 total = 0
 for score in scores:

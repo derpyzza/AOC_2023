@@ -115,5 +115,6 @@ zoneight234
 }
 
 fn main() {
-    solve_second_problem();
+    solve_first_problem();
+    // solve_second_problem();
 }
