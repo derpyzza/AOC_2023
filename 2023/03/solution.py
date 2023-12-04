@@ -1,7 +1,7 @@
 
 import re
 
-file_path = './input.txt'
+file_path = './testCase.txt'
 
 with open(file_path, 'r') as file:
     file_content = file.read()
