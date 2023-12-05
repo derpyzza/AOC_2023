@@ -17,11 +17,6 @@ struct RawMapGroup {
     data: String,
 }
 
-struct MapGroup {
-    cat: String,
-    data: Vec<MapDoc>,
-}
-
 struct Map {
     cat: DataType,
     data: Vec<MapDoc>,
@@ -40,7 +35,7 @@ fn sort_items (item: &str) -> DataType {
     }
 }
 
-fn map(seed: u64, mapList: Vec<MapDoc>) -> u64 {
+fn map(seed: u64, mapList: &Vec<MapDoc>) -> u64 {
     let mut result = seed;
     for map in mapList {
         if seed >= map[1] && seed < map[1]+map[2] {
@@ -66,7 +61,6 @@ fn main() {
         .map(|s| {
             let map_type = s.split(":").next().unwrap().to_string();
             let map_data = s.split(":").skip(1).next().unwrap().to_string();
-            println!("map data: {map_data}");
 
             let map_group: RawMapGroup = RawMapGroup { cat: map_type, data: map_data };
             map_group
@@ -74,7 +68,7 @@ fn main() {
 
     let map_groups: Vec<Map> = raw_map_groups.iter().map(|map_group| {
         let cat = map_group.cat.clone();
-        println!("data: {}", map_group.data);
+        // println!("data: {}", map_group.data);
         let data_strings: Vec<String> = if let Some(x) = map_group.data.strip_prefix("\n\n")
         {
             x.split("\n")
@@ -124,34 +118,17 @@ fn main() {
 
     let mut lowest: u64 = u64::MAX;
     for seed in seeds {
-        // println!("Seed: {seed}
-        let soil = map(seed, map_groups[0].data.clone());
-        let fert = map(soil, map_groups[1].data.clone());
-        let water = map(fert, map_groups[2].data.clone());
-        let light = map(water, map_groups[3].data.clone());
-        let temp = map(light, map_groups[4].data.clone());
-        let humid = map(temp, map_groups[5].data.clone());
-        let location = map(humid, map_groups[6].data.clone());
+        let soil = map(seed, &map_groups[0].data);
+        let fert = map(soil, &map_groups[1].data);
+        let water = map(fert, &map_groups[2].data);
+        let light = map(water, &map_groups[3].data);
+        let temp = map(light, &map_groups[4].data);
+        let humid = map(temp, &map_groups[5].data);
+        let location = map(humid, &map_groups[6].data);
         if location < lowest {
             lowest = location
         }
-        println!("seed: {}, location: {}", seed, location);
     }
     println!("lowest: {}", lowest);
 
-
-    // println!("pls be 58: {}", map(95, map_groups[0].data.clone()));
-    // // unsorted array
-    // let item_array: Vec<DataType> = list
-    //     .into_iter()
-    //     .skip(2) // skip the seeds list and the empty line after that
-    //     .map(|x| {
-    //         println!("X: {x}");
-    //         sort_items(x.as_str())
-    //     })
-    //     .collect();
-    //
-    // for item in item_array {
-    //
-    // }
 }
