@@ -212,7 +212,7 @@ fn solve_part_two(contents: String) -> u32 {
 
 fn main() {
 
-    let file_path = "./testCase.txt";
+    let file_path = "./input.txt";
 
     let contents = fs::read_to_string(file_path)
         .expect("Should have been able to read the file");
