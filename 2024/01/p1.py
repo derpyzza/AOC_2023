@@ -23,8 +23,8 @@ for line in lines:
 col1.sort()
 col2.sort()
 
-print(col1)
-print(col2)
+# print(col1)
+# print(col2)
 
 ans = []
 
@@ -34,10 +34,10 @@ for x in range(nlines):
         a *= -1    
     ans.append(a)
 
-print(ans)
+# print(ans)
 s = 0
 
 for x in range(0, nlines):
     s += ans[x]
 
-print(s)
+print("out: ", s)
